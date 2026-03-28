@@ -91,3 +91,10 @@ h1, h2 {
   border-radius: 5px;
   cursor: pointer; /* Ajout d'un curseur pointer pour indiquer que c'est cliquable */
 }
+.btn-back {
+  background-color: #3498db;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
