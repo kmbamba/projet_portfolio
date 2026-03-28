@@ -24,3 +24,14 @@
     border-radius: 5px;
     row-gap: 10px; /* Ajoute un espace entre les champs du formulaire */
 }
+.content form textarea {
+    border: 1px solid #57a8f5;
+    border-radius: 5px;
+    row-gap: 10px;
+}
+.btn-sub-res {
+  display: flex;
+  justify-content: center;
+  gap: 6rem; /* Ajoute un espace entre les boutons */
+  padding: 2rem 0;
+}
