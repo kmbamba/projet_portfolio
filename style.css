@@ -37,3 +37,24 @@ header img {
   margin-bottom: 10px;;
   border-radius: 90px;
 }
+.header h1 {
+  margin: 0;
+  text-align: center;
+  text-decoration: underline;
+}
+nav {
+  background-color: #34495e;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+nav a {
+  color: rgb(255, 255, 255);
+  margin: 0 1rem;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: cursive;
+}
+nav a:hover {
+  text-decoration: rgb(56, 56, 56);
+  color: rgb(0, 255, 13);
+}
