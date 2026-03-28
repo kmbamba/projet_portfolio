@@ -35,3 +35,19 @@
   gap: 6rem; /* Ajoute un espace entre les boutons */
   padding: 2rem 0;
 }
+.btn-sub-res button[type="submit"] {
+  background-color: #57a8f5;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
+.btn-sub-res button[type="reset"] {
+  background-color: #f44336;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
