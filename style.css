@@ -6,6 +6,7 @@ body {
   background-color: #f4f4f4;
   color: #333;
 }
+
 .nav-menu {
   display: flex;
   flex-direction: row;
@@ -13,6 +14,7 @@ body {
   background-color: #34495e;
   border-radius: 10px;  
 }
+
 .nav-menu a {
     text-decoration: none;
     font-size: 20px;
@@ -22,6 +24,8 @@ body {
     cursor: pointer;
     color: white;
 }
+
+/* En-tête */
 header {
   display: flex;
   flex-direction: row;
@@ -31,22 +35,28 @@ header {
   padding: 1rem;
   gap: 50%;
 }
+
 header img {
   width: 80px;
   height: auto;
   margin-bottom: 10px;;
   border-radius: 90px;
 }
+
+
 .header h1 {
   margin: 0;
   text-align: center;
   text-decoration: underline;
 }
+
+/* Navigation */
 nav {
   background-color: #34495e;
   padding: 0.5rem;
   border-radius: 10px;
 }
+
 nav a {
   color: rgb(255, 255, 255);
   margin: 0 1rem;
@@ -54,10 +64,12 @@ nav a {
   font-size: 20px;
   font-family: cursive;
 }
+
 nav a:hover {
   text-decoration: rgb(56, 56, 56);
   color: rgb(0, 255, 13);
 }
+
 /* Section principale */
 main {
   max-width: 800px;
@@ -67,21 +79,16 @@ main {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-/* Pied de page */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #2c3e50;
-  color: white;
-  margin-top: 2rem;
-}
-subtitle-container {
+
+.subtitle-container {
   text-align: justify;
 }
+
 /* Titres */
 h1, h2 {
   color: #2c3e50;
 }
+
 /* Boutons */
 .btn-add {
   background-color: #2ecc71;
@@ -91,6 +98,7 @@ h1, h2 {
   border-radius: 5px;
   cursor: pointer; /* Ajout d'un curseur pointer pour indiquer que c'est cliquable */
 }
+
 .btn-back {
   background-color: #3498db;
   color: white;
@@ -98,3 +106,15 @@ h1, h2 {
   border: none;
   border-radius: 5px;
 }
+
+
+/* Pied de page */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #2c3e50;
+  color: white;
+  margin-top: 2rem;
+}
+
+/* Responsive */
