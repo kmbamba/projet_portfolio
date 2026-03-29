@@ -20,3 +20,10 @@
     align-items: center;
     gap: 10px;
 }
+.btn-dd {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    /* Ajoute un espace entre les boutons */
+    padding: 2rem 0;
+}
