@@ -27,3 +27,18 @@
     /* Ajoute un espace entre les boutons */
     padding: 2rem 0;
 }
+.btn-detail,
+.btn-delete {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    gap: 10px;
+}
+.btn-detail {
+    background-color: #007bff;
+}
+.btn-delete {
+    background-color: #dc3545;
+}
