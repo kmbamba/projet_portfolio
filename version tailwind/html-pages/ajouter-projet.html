@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajouter un nouveau projet</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../css-pages/form.css" />
+</head>
+<body>
+    <header>
+
+    <img src="listes-projets/img/logo.jpeg" alt="Logo du Portfolio" class="logo" href="../index.html"/>
+
+    <nav class="nav-menu">
+      <a href="lister-projet.html">Liste</a>
+      <a href="#" block="Ajouter">Ajouter</a>
+      <a href="contact.html">Contacts</a>
+    </nav>
+  </header>
+  <main class="content">
+    <div>
+      <div class="btn-back-index">
+        <button class="btn-back"><a href="../index.html">🔙Retour à l'accueil</a></button>
+      </div>
+    </div>
+    <h2>Ajouter un nouveau projet</h2>
+    <form id="addProjectForm">
+      <div class="form-group">
+        <label for="projectName">Nom du projet:</label>
+        <input type="text" id="projectName" name="projectName" required />
+      </div>
+      <div class="form-group">
+        <label for="projectDescription">Description du projet:</label>
+        <textarea id="projectDescription" name="projectDescription" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="projectTechnology1">Technologie 1</label>
+        <input type="text" id="projectTechnology1" name="projectTechnology1" required />
+      </div>
+      <div class="form-group">
+        <label for="projectTechnology2">Technologie 2</label>
+        <input type="text" id="projectTechnology2" name="projectTechnology2" required />
+      </div>
+      <div class="form-group">
+        <label for="projectTechnology3">Technologie 3</label>
+        <input type="text" id="projectTechnology3" name="projectTechnology3" required />
+      </div>
+
+      <div class="form-group">
+        <label for="projectImage">Image du projet:</label>
+        <input type="file" id="projectImage" name="projectImage" accept="image/*" />
+      </div>
+
+        <div class="btn-sub-res">
+          <button type="submit">Ajouter le projet</button>
+          <button type="reset">Annuler</button>
+        </div>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 G4 Fullstack Portfolio</p>
+  </footer>
+</body>
+</html>
