@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G4 Fullstack — Portfolio SPA</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       HEADER / NAVBAR
+       Navigation SPA : data-view identifie la vue cible
+  ═══════════════════════════════════════════════════════ -->
+  <header>
+    <a class="logo" href="#" data-view="accueil" aria-label="Accueil">
+      <img src="img/logo.jpeg" alt="Logo Portfolio G4">
+    </a>
+    <nav aria-label="Navigation principale">
+      <a href="#" data-view="accueil"  class="active">Accueil</a>
+      <a href="#" data-view="liste"> Liste</a>
+      <a href="#" data-view="ajouter"> Ajouter</a>
+      <a href="#" data-view="contact"> Contact</a>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════
+       CONTENU PRINCIPAL — Zone des vues SPA
+  ═══════════════════════════════════════════════════════ -->
+  <main>
+
+    <!-- ──────────────────────────────────────────────────
+         VUE 1 : ACCUEIL
+    ────────────────────────────────────────────────── -->
+    <section id="view-accueil" class="view active" aria-label="Accueil">
+      <div class="hero">
+
+        <div style="text-align:center; margin-bottom:1.5rem;">
+          <h1 class="hero-title">Bienvenue sur mon Portfolio</h1>
+          <p>Découvrez mes projets et compétences en développement web, mobile et design</p>
+        </div>
+
+        <section>
+          <h2>À propos de moi</h2>
+          <p>Je suis un développeur passionné avec une expérience dans la création de sites web,
+          d'applications mobiles et de designs innovants. Mon objectif est de créer des expériences
+          utilisateur exceptionnelles grâce à des solutions techniques efficaces.</p>
+        </section>
+
+        <section>
+          <h2>Compétences</h2>
+          <ul>
+            <li>Développement Web : HTML, CSS, JavaScript, React, Node.js</li>
+            <li>Développement Mobile : Flutter, React Native</li>
+            <li>Design : Figma, Adobe XD</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Projets Récents</h2>
+          <ul>
+            <li><strong>Projet 1 :</strong> Application de gestion de tâches (React, Node.js)</li>
+            <li><strong>Projet 2 :</strong> Site e-commerce responsive (HTML, CSS, JavaScript)</li>
+            <li><strong>Projet 3 :</strong> Application mobile de suivi de fitness (Flutter)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Contactez-moi</h2>
+          <p>Vous pouvez me contacter par email à
+            <a class="email-link" href="mailto:kmbamba567@gmail.com">kmbamba567@gmail.com</a>
+          </p>
+        </section>
+
+        <section>
+          <h2>Réseaux Sociaux</h2>
+          <ul class="social-links">
+            <li><a href="https://linkedin.com" target="_blank" rel="noopener">🔗 LinkedIn</a></li>
+            <li><a href="https://github.com" target="_blank" rel="noopener">🐙 GitHub</a></li>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener">🐦 Twitter</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────
+         VUE 2 : LISTE DES PROJETS
+         #projets-container = conteneur flexbox des cartes
+         Les cartes sont créées dynamiquement par JS (creerProjet)
+    ────────────────────────────────────────────────── -->
+    <section id="view-liste" class="view" aria-label="Liste des projets">
+
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+        <h1> Liste des projets</h1>
+        <button id="btn-nouveau-projet" class="btn btn-success">
+           Nouveau projet
+        </button>
+      </div>
+
+      <!--
+        Conteneur flexbox principal des cartes projets.
+        Les nœuds créés par creerProjet() sont insérés ici,
+        avec insertBefore(noeud, firstChild) pour les placer EN PREMIER.
+      -->
+      <div id="projets-container" aria-live="polite" aria-label="Liste des projets">
+        <!-- Les cartes projet sont injectées ici par JavaScript -->
+      </div>
+
+    </section>
+
+    <!-- ──────────────────────────────────────────────────
+         VUE 3 : AJOUTER UN PROJET
+    ────────────────────────────────────────────────── -->
+    <section id="view-ajouter" class="view" aria-label="Ajouter un projet">
+
+      <button id="btn-retour-ajouter" class="btn-back">
+        Retour à la liste
+      </button>
+
+      <!-- Formulaire géré par gererSoumissionFormulaire() dans app.js -->
+      <form id="form-ajouter" novalidate>
+        <h2> Ajouter un nouveau projet</h2>
+
+        <div class="form-group">
+          <label for="input-nom">Nom du projet <span style="color:red">*</span></label>
+          <input type="text" id="input-nom" placeholder="Ex : Application météo" required maxlength="100">
+        </div>
+
+        <div class="form-group">
+          <label for="input-description">Description <span style="color:red">*</span></label>
+          <textarea id="input-description" placeholder="Décrivez votre projet en quelques phrases..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input-tech1">Technologie 1 <span style="color:red">*</span></label>
+          <input type="text" id="input-tech1" placeholder="Ex : JavaScript" required>
+        </div>
+
+        <div class="form-group">
+          <label for="input-tech2">Technologie 2</label>
+          <input type="text" id="input-tech2" placeholder="Ex : React">
+        </div>
+
+        <div class="form-group">
+          <label for="input-tech3">Technologie 3</label>
+          <input type="text" id="input-tech3" placeholder="Ex : Node.js">
+        </div>
+
+        <div class="form-group" id="image-preview-container">
+          <label for="input-image">Image du projet</label>
+          <input type="file" id="input-image" accept="image/*">
+          <!-- Prévisualisation de l'image sélectionnée -->
+          <img id="image-preview" alt="Aperçu de l'image">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="btn-submit-ajouter" class="btn btn-primary">
+            Ajouter le projet
+          </button>
+          <button type="button" id="btn-annuler" class="btn btn-danger">
+             Annuler
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────
+         VUE 4 : DÉTAIL D'UN PROJET
+         Peuplée dynamiquement par detaillerProjet()
+    ────────────────────────────────────────────────── -->
+    <section id="view-detail" class="view" aria-label="Détail du projet">
+
+      <button id="btn-retour-liste" class="btn-back">
+         Retour à la liste
+      </button>
+
+      <div id="vue-detail-content">
+        <!-- Titre du projet -->
+        <h1 id="detail-nom"></h1>
+
+        <!-- Image du projet -->
+        <img id="detail-image" alt="Image du projet" loading="lazy">
+
+        <!-- Description -->
+        <p id="detail-description"></p>
+
+        <!-- Technologies -->
+        <div style="width:100%">
+          <h2 style="margin-bottom:0.75rem;">Technologies utilisées :</h2>
+          <div id="detail-technologies">
+            <!-- Badges générés par detaillerProjet() -->
+          </div>
+        </div>
+
+        <!-- Date de création -->
+        <p style="font-size:0.85rem; color:#94a3b8; width:100%;">
+           Créé le : <span id="detail-date"></span>
+        </p>
+
+        <!-- Boutons d'action -->
+        <div class="form-actions" style="margin-top:2rem;">
+          <button id="btn-editer-projet" class="btn btn-primary"> Éditer</button>
+          <button id="btn-supprimer-detail" class="btn btn-danger"> Supprimer</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ──────────────────────────────────────────────────
+         VUE 5 : ÉDITER UN PROJET
+    ────────────────────────────────────────────────── -->
+    <section id="view-editer" class="view" aria-label="Éditer un projet">
+
+      <button id="btn-retour-detail" class="btn-back">
+         Retour au détail
+      </button>
+
+      <form id="form-editer" novalidate>
+        <h2> Éditer le projet</h2>
+
+        <div class="form-group">
+          <label for="input-editer-nom">Nom du projet <span style="color:red">*</span></label>
+          <input type="text" id="input-editer-nom" placeholder="Ex : Application météo" required maxlength="100">
+        </div>
+
+        <div class="form-group">
+          <label for="input-editer-description">Description <span style="color:red">*</span></label>
+          <textarea id="input-editer-description" placeholder="Décrivez votre projet..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input-editer-tech1">Technologie 1 <span style="color:red">*</span></label>
+          <input type="text" id="input-editer-tech1" placeholder="Ex : JavaScript" required>
+        </div>
+
+        <div class="form-group">
+          <label for="input-editer-tech2">Technologie 2</label>
+          <input type="text" id="input-editer-tech2" placeholder="Ex : React">
+        </div>
+
+        <div class="form-group">
+          <label for="input-editer-tech3">Technologie 3</label>
+          <input type="text" id="input-editer-tech3" placeholder="Ex : Node.js">
+        </div>
+
+        <div class="form-group" id="editer-image-preview-container">
+          <label for="input-editer-image">Image du projet</label>
+          <input type="file" id="input-editer-image" accept="image/*">
+          <img id="image-editer-preview" alt="Aperçu de l'image">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="btn-submit-editer" class="btn btn-primary"> Enregistrer</button>
+          <button type="button" id="btn-annuler-editer" class="btn btn-danger">Annuler</button>
+        </div>
+      </form>
+
+    </section>
+
+    <!-- ──────────────────────────────────────────────────
+         VUE 6 : CONTACT
+    ────────────────────────────────────────────────── -->
+    <section id="view-contact" class="view" aria-label="Contact">
+      <div class="contact-box">
+        <h1> Contactez-moi</h1>
+        <p>N'hésitez pas à m'écrire directement via le formulaire ci-dessous.</p>
+
+        <form id="form-contact" novalidate>
+          <div class="form-group">
+            <label for="input-contact-nom">Votre nom <span style="color:red">*</span></label>
+            <input type="text" id="input-contact-nom" placeholder="Ex : Jean Dupont" required maxlength="80">
+          </div>
+
+          <div class="form-group">
+            <label for="input-contact-email">Votre email <span style="color:red">*</span></label>
+            <input type="email" id="input-contact-email" placeholder="exemple@mail.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-contact-message">Votre message <span style="color:red">*</span></label>
+            <textarea id="input-contact-message" placeholder="Décrivez votre demande..." required rows="5"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="btn-contact-envoyer" class="btn btn-primary">Envoyer</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════
+       MODAL DE CONFIRMATION — Suppression de projet
+       Déclenché par demanderSuppression() dans app.js
+  ═══════════════════════════════════════════════════════ -->
+  <div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-titre">
+    <div id="modal-box">
+      <h3 id="modal-titre"> Confirmer la suppression</h3>
+      <p id="modal-message"><!-- Peuplé dynamiquement --></p>
+      <div class="modal-actions">
+        <button id="btn-confirmer-suppression" class="btn btn-danger"> Supprimer</button>
+        <button id="btn-annuler-suppression"   class="btn btn-gray"> Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       TOAST NOTIFICATION — afficherToast() dans app.js
+  ═══════════════════════════════════════════════════════ -->
+  <div id="toast" role="alert" aria-live="assertive"></div>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════ -->
+  <footer>
+    <p>&copy; 2026 G4 Fullstack Portfolio — SPA Vanilla JS + json-server</p>
+  </footer>
+
+  <!-- Script principal — chargé en dernier pour accéder au DOM -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
