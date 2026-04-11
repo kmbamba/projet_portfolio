@@ -1,0 +1,461 @@
+/* ============================================================
+   styles.css — Feuille de styles principale du Portfolio SPA
+   Auteur     : G4 Fullstack
+   Description: Styles globaux, layout, composants et animations
+   ============================================================ */
+
+/* ── Variables CSS globales ─────────────────────────────────── */
+:root {
+  --primary:      #1e293b;   /* Gris foncé navbar/footer */
+  --accent:       #22c55e;   /* Vert accent (liens actifs) */
+  --accent-hover: #16a34a;
+  --blue:         #3b82f6;
+  --blue-hover:   #2563eb;
+  --red:          #ef4444;
+  --red-hover:    #dc2626;
+  --bg:           #f1f5f9;
+  --card-bg:      #ffffff;
+  --text:         #1e293b;
+  --text-muted:   #64748b;
+  --border:       #e2e8f0;
+  --shadow:       0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.07);
+  --radius:       0.75rem;
+  --transition:   all 0.2s ease;
+  --font:         'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Reset & base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: inherit; border: none; }
+
+/* ── Header / Navbar ────────────────────────────────────────── */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+header .logo img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  transition: var(--transition);
+}
+header .logo img:hover { transform: scale(1.08); }
+
+nav {
+  background: #334155;
+  border-radius: 0.75rem;
+  padding: 0.4rem 1.5rem;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  transition: var(--transition);
+  position: relative;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+nav a:hover, nav a.active { color: var(--accent); }
+nav a.active::after, nav a:hover::after { width: 100%; }
+
+/* ── Main content wrapper ───────────────────────────────────── */
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Sections / Views (SPA routing) ────────────────────────── */
+.view { display: none; animation: fadeIn 0.3s ease; }
+.view.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Bouton retour ──────────────────────────────────────────── */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--blue);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: var(--transition);
+  margin-bottom: 1.5rem;
+}
+.btn-back:hover { background: var(--blue-hover); }
+
+/* ── Headings ───────────────────────────────────────────────── */
+h1 { font-size: 2rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+h2 { font-size: 1.5rem; font-weight: 600; color: var(--text); margin-bottom: 1rem; }
+h3 { font-size: 1.125rem; font-weight: 600; }
+
+/* ── Page Accueil ───────────────────────────────────────────── */
+#view-accueil .hero {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2.5rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+#view-accueil .hero-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-bottom: 0.5rem;
+}
+#view-accueil section { margin-bottom: 1.75rem; }
+#view-accueil p { color: var(--text-muted); line-height: 1.7; }
+#view-accueil ul li { color: var(--text-muted); padding: 0.2rem 0; padding-left: 1.2rem; position: relative; }
+#view-accueil ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
+#view-accueil a.email-link { color: var(--blue); }
+#view-accueil a.email-link:hover { text-decoration: underline; }
+.social-links a {
+  color: var(--blue);
+  transition: var(--transition);
+}
+.social-links a:hover { color: var(--accent); text-decoration: underline; }
+
+/* ── Grille de projets ──────────────────────────────────────── */
+#projets-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* ── Carte projet ───────────────────────────────────────────── */
+.projet-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  width: calc(33.333% - 1rem);
+  min-width: 220px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  animation: cardIn 0.35s ease both;
+}
+.projet-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.projet-card .card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.projet-card .card-body h3 {
+  text-align: center;
+  color: var(--text);
+}
+.projet-card .card-body img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.projet-card .card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0 1rem 1rem;
+}
+
+/* ── Boutons génériques ─────────────────────────────────────── */
+.btn {
+  padding: 0.45rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.btn-primary { background: var(--blue);  color: #fff; }
+.btn-primary:hover { background: var(--blue-hover); }
+.btn-danger  { background: var(--red);   color: #fff; }
+.btn-danger:hover  { background: var(--red-hover); }
+.btn-success { background: var(--accent); color: #fff; }
+.btn-success:hover { background: var(--accent-hover); }
+.btn-gray    { background: #94a3b8; color: #fff; }
+.btn-gray:hover { background: #64748b; }
+
+/* ── Page Détail projet ─────────────────────────────────────── */
+#vue-detail-content {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+#vue-detail-content img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+#vue-detail-content p { color: var(--text-muted); line-height: 1.7; text-align: justify; width: 100%; }
+#detail-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+}
+.tech-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 0.25rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ── Formulaire ajout projet ────────────────────────────────── */
+#form-ajouter {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+#form-ajouter h2 { text-align: center; }
+
+.form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+.form-group label { font-size: 0.875rem; font-weight: 600; color: #374151; }
+.form-group input,
+.form-group textarea {
+  border: 1px solid #93c5fd;
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text);
+  outline: none;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(59,130,246,.2);
+}
+.form-group textarea { resize: vertical; min-height: 90px; }
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding-top: 0.5rem;
+}
+
+/* ── Preview image ajout ────────────────────────────────────── */
+#image-preview-container { text-align: center; }
+#image-preview {
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  display: none;
+  border: 2px dashed var(--blue);
+  object-fit: cover;
+}
+
+/* ── Notification toast ─────────────────────────────────────── */
+#toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: #1e293b;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.625rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  z-index: 9999;
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+#toast.show { transform: translateY(0); opacity: 1; }
+#toast.success { border-left: 4px solid var(--accent); }
+#toast.error   { border-left: 4px solid var(--red); }
+
+/* ── Modal de confirmation suppression ──────────────────────── */
+#modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+}
+#modal-overlay.open { display: flex; }
+#modal-box {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0,0,0,.3);
+  text-align: center;
+}
+#modal-box h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
+#modal-box p  { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem; }
+#modal-box .modal-actions { display: flex; justify-content: center; gap: 1rem; }
+
+/* ── Spinner chargement ─────────────────────────────────────── */
+.spinner {
+  display: inline-block;
+  width: 40px; height: 40px;
+  border: 4px solid #e2e8f0;
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: 2rem auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-wrapper { display: flex; justify-content: center; }
+
+/* ── Page Contact ───────────────────────────────────────────── */
+#view-contact .contact-box {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+#view-contact .contact-box p { color: var(--text-muted); margin-bottom: 1rem; }
+#view-contact .contact-info { display: flex; flex-direction: column; gap: 0.75rem; }
+#view-contact .contact-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  color: var(--text-muted); font-size: 0.95rem;
+}
+#view-contact .contact-item a { color: var(--blue); }
+#view-contact .contact-item a:hover { text-decoration: underline; }
+
+#view-contact form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+#view-contact form label {
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+#view-contact form input,
+#view-contact form textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: var(--radius);
+  background: var(--background);
+  color: var(--text);
+  resize: vertical;
+}
+
+#view-contact form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#view-contact form .btn {
+  width: auto;
+  min-width: 140px;
+}
+
+/* ── État vide (aucun projet) ───────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+}
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+/* ── Footer ─────────────────────────────────────────────────── */
+footer {
+  background: var(--primary);
+  color: #e2e8f0;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .projet-card { width: calc(50% - 0.75rem); }
+  nav { gap: 1rem; padding: 0.4rem 0.75rem; }
+}
+@media (max-width: 520px) {
+  .projet-card { width: 100%; }
+  header { padding: 0.75rem 1rem; }
+  main { padding: 1rem 0.75rem; }
+  .form-actions { gap: 1rem; }
+}
