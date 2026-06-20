@@ -1,25 +1,87 @@
-# Environment variables
+# =========================
+# ENVIRONNEMENT
+# =========================
 .env
+.env.*
 backend_react/.env
 frontend_react/.env
 
-# Dependencies
+# =========================
+# NODE.JS
+# =========================
+node_modules/
 backend_react/node_modules/
 frontend_react/node_modules/
 
-# Build
+# =========================
+# BUILD
+# =========================
 dist/
+build/
 frontend_react/dist/
+frontend_react/build/
 
-# Backup MongoDB
-backup/
-
-# Logs
+# =========================
+# LOGS
+# =========================
 *.log
 npm-debug.log*
-k8s/02-secret.yaml
+yarn-debug.log*
+yarn-error.log*
 
-# Terraform
+# =========================
+# MONGODB BACKUPS
+# =========================
+backup/
+
+# =========================
+# KUBERNETES SECRETS
+# =========================
+k8s/02-secret.yaml
+*secret*.yaml
+*secret*.yml
+
+# =========================
+# TERRAFORM
+# =========================
 **/.terraform/
+.terraform/
+
 *.tfstate
-*.tfstate.backup
+*.tfstate.*
+crash.log
+
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+.terraform.lock.hcl
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# JENKINS
+# =========================
+jenkins_home/
+
+# =========================
+# PROMETHEUS / GRAFANA
+# =========================
+grafana-data/
+prometheus-data/
+
+# =========================
+# MINIKUBE
+# =========================
+.minikube/
