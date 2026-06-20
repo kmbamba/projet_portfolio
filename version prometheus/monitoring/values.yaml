@@ -1,0 +1,54 @@
+# values.yaml — Configuration Helm pour kube-prometheus-stack
+# Utilisation : helm install monitoring prometheus-community/kube-prometheus-stack \
+#                 --namespace monitoring --create-namespace -f monitoring/values.yaml
+
+grafana:
+  adminPassword: admin123
+  service:
+    type: LoadBalancer
+  persistence:
+    enabled: false
+
+prometheus:
+  prometheusSpec:
+    # Permet à Prometheus de découvrir les ServiceMonitor
+    # même s'ils n'ont pas le label "release: monitoring"
+    serviceMonitorSelectorNilUsesHelmValues: false
+    retention: 7d
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+  service:
+    type: LoadBalancer
+
+alertmanager:
+  alertmanagerSpec:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 128Mi
+    # Permet de découvrir les AlertmanagerConfig (CRD)
+    # dans tous les namespaces, sans label spécifique requis
+    alertmanagerConfigSelector: {}
+    alertmanagerConfigNamespaceSelector: {}
+    # Empêche l'opérateur d'injecter automatiquement un matcher
+    # "namespace=<namespace de l'AlertmanagerConfig>" qui bloquerait
+    # le routage des alertes venant d'autres namespaces (ex: portfolio)
+    alertmanagerConfigMatcherStrategy:
+      type: None
+  service:
+    type: LoadBalancer
+
+# Métriques par défaut activées (nodes, kube-state-metrics, etc.)
+defaultRules:
+  create: true
+
+nodeExporter:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true
